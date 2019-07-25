@@ -30,6 +30,14 @@ class TestStringCalcApp {
 	@Test
 	void testAddWithTwoInts() {
 		StringCalcApp stringCal = new StringCalcApp();
+		String expected = "3";
+		String actual = stringCal.add("1,2");
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void testAddWithManyInts() {
+		StringCalcApp stringCal = new StringCalcApp();
 		String expected = "10";
 		String actual = stringCal.add("1,2,3,4");
 		assertEquals(expected, actual);
@@ -54,8 +62,17 @@ class TestStringCalcApp {
 	@Test
 	void testNewLineAsSep() {
 		StringCalcApp stringCal = new StringCalcApp();
-		String expected = "210.20";
-		String actual = stringCal.add("175.2\n35");
+		String expected = "6.00";
+		String actual = stringCal.add("1\n2,3");
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	void testMissingNumberInLastPosition() {
+		StringCalcApp stringCal = new StringCalcApp();
+		String expected = "Number expected but EOF found.";
+		String actual = stringCal.add("1,2,3,");
+		assertEquals(expected, actual);
+	}
+
 }
